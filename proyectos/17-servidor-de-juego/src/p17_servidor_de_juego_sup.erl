@@ -5,16 +5,49 @@
 -export([init/1]).
 
 start_link() ->
-  supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
-%% TODO(equipo): agregar aqui los supervisores/workers del dominio. one_for_one porque
-%% por ahora los hijos son independientes; cambiar a rest_for_one si hay orden de arranque.
 init([]) ->
-  Children = [
-    #{id => p17_servidor_de_juego_server,
-      start => {p17_servidor_de_juego_server, start_link, []},
-      restart => permanent,
-      shutdown => 5000,
-      type => worker}
-  ],
-  {ok, {#{strategy => one_for_one, intensity => 10, period => 60}, Children}}.
+    Hijos = [
+        #{
+            id => p17_eventos,
+            start => {p17_eventos, start_link, []},
+            restart => permanent,
+            shutdown => 5000,
+            type => worker,
+            modules => [p17_eventos]
+        },
+        #{
+            id => p17_servidor_de_juego_server,
+            start => {p17_servidor_de_juego_server, start_link, []},
+            restart => permanent,
+            shutdown => 5000,
+            type => worker,
+            modules => [p17_servidor_de_juego_server]
+        },
+        #{
+            id => p17_partidas_sup,
+            start => {p17_partidas_sup, start_link, []},
+            restart => permanent,
+            shutdown => infinity,
+            type => supervisor,
+            modules => [p17_partidas_sup]
+        },
+        #{
+            id => p17_matchmaking,
+            start => {p17_matchmaking, start_link, []},
+            restart => permanent,
+            shutdown => 5000,
+            type => worker,
+            modules => [p17_matchmaking]
+        },
+        #{
+            id => p17_http_server,
+            start => {p17_http_server, start_link, []},
+            restart => permanent,
+            shutdown => 5000,
+            type => worker,
+            modules => [p17_http_server]
+        }
+    ],
+    {ok, {#{strategy => one_for_one, intensity => 10, period => 60}, Hijos}}.

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline-variant":"#3e4850","surface-variant":"#313441","on-tertiary-container":"#003943","inverse-surface":"#dfe2f2","primary-fixed":"#c9e6ff","surface-dim":"#0f131e","tertiary-container":"#00aac6","surface-bright":"#353945","on-surface-variant":"#bec8d2","secondary":"#ffb2b7","on-error":"#690005","secondary-fixed-dim":"#ffb2b7","tertiary-fixed-dim":"#4cd7f6","primary":"#89ceff","inverse-on-surface":"#2c303c","surface-container-high":"#262a36","tertiary-fixed":"#acedff","on-error-container":"#ffdad6","on-tertiary-fixed-variant":"#004e5c","outline":"#88929b","secondary-fixed":"#ffdadb","primary-fixed-dim":"#89ceff","on-secondary":"#67001b","surface-container":"#1b1f2b","on-secondary-fixed":"#40000d","inverse-primary":"#006591","tertiary":"#4cd7f6","on-tertiary":"#003640","error":"#ffb4ab","on-primary-fixed-variant":"#004c6e","primary-container":"#0ea5e9","surface-tint":"#89ceff","on-primary-container":"#003751","secondary-container":"#b50036","error-container":"#93000a","on-secondary-fixed-variant":"#92002a","surface-container-highest":"#313441","background":"#0f131e","surface":"#0f131e","on-tertiary-fixed":"#001f26","on-primary":"#00344d","on-primary-fixed":"#001e2f","on-background":"#dfe2f2","on-surface":"#dfe2f2","surface-container-lowest":"#0a0e19","surface-container-low":"#171b27","on-secondary-container":"#ffc2c4"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-sm":"0.5rem","space-lg":"1.5rem","space-xl":"2rem",margin:"1rem","gutter-lg":"1.5rem","margin-md":"1.5rem","space-xs":"0.25rem",gutter:"1rem","space-md":"1rem","margin-lg":"2.5rem"},fontFamily:{"headline-lg":["Space Grotesk"],"cell-indicator":["Space Grotesk"],"title-md":["Manrope"],"label-md":["Space Grotesk"],"headline-sm":["Space Grotesk"],"display-lg-mobile":["Space Grotesk"],"label-lg":["Space Grotesk"],"display-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg-mobile":["Space Grotesk"],"body-md":["Manrope"],"body-lg":["Manrope"]},fontSize:{"headline-lg":["32px",{lineHeight:"40px",fontWeight:"600"}],"cell-indicator":["18px",{lineHeight:"18px",fontWeight:"700"}],"title-md":["18px",{lineHeight:"24px",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"500"}],"display-lg-mobile":["32px",{lineHeight:"40px",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",fontWeight:"600"}],"display-lg":["48px",{lineHeight:"56px",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"headline-lg-mobile":["24px",{lineHeight:"32px",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col border-r border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-lg flex items-center gap-space-sm border-b border-outline-variant/20"><div class="w-9 h-9 rounded bg-surface-container-high border border-outline-variant/40 flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[20px]">terminal</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-primary leading-none">P17 ADMIN</span><span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mt-1">Erlang / OTP Core</span></div></div><div class="px-space-md py-space-sm"><div class="p-space-sm rounded bg-surface-container border border-outline-variant/30 flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-md text-label-md text-on-surface-variant">SUPERVISOR CLUSTER</span><span class="flex h-2 w-2 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span></span></div><div class="font-label-md text-label-md text-on-surface flex items-center gap-1.5 truncate"><span class="text-tertiary font-bold">●</span> <span class="truncate font-mono">p17@game-node-01</span></div><div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md pt-1 border-t border-outline-variant/20"><span>OTP 26.2</span><span class="text-primary font-mono">Ping: 12ms</span></div></div></div><nav class="flex-1 px-space-md py-space-sm flex flex-col gap-1.5" data-active-classes="bg-primary-container text-on-primary-container font-label-lg shadow-[0_0_16px_rgba(14,165,233,0.25)]"><a aria-current="page" class="flex items-center gap-3 px-space-md py-2.5 rounded transition-all bg-primary-container text-on-primary-container font-label-lg shadow-[0_0_16px_rgba(14,165,233,0.25)]" data-path="dashboard-en-tiempo-real" href="#"><span class="material-symbols-outlined text-[20px]">monitoring</span>Dashboard en tiempo real</a><a class="flex items-center gap-3 px-space-md py-2.5 rounded font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="detalle-de-partida-otp" href="#"><span class="material-symbols-outlined text-[20px]">hub</span>Detalle de partida (OTP)</a><a class="flex items-center gap-3 px-space-md py-2.5 rounded font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="bitacora-de-eventos-y-alertas" href="#"><span class="material-symbols-outlined text-[20px]">warning</span>Bitácora de eventos y alertas</a></nav><div class="p-space-md border-t border-outline-variant/20 bg-surface-container-lowest/60 flex flex-col gap-2"><div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md"><span>BEAM Processes</span><span class="text-on-surface font-mono">14,289</span></div><div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden"><div class="bg-tertiary h-full w-[42%]"></div></div><div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md"><span>Schedulers Online</span><span class="text-primary font-mono">16 / 16</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-low/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container border border-outline-variant/40"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface uppercase tracking-wide">Nodo online: p17@game-node-01</span></div><div class="hidden xl:flex items-center gap-space-lg text-on-surface-variant border-l border-outline-variant/30 pl-space-md"><div class="flex items-center gap-1.5"><span class="font-label-md text-label-md">ETS Tables:</span><span class="font-label-md text-label-md font-mono text-on-surface">128</span></div><div class="flex items-center gap-1.5"><span class="font-label-md text-label-md">Partidas Activas:</span><span class="font-label-md text-label-md font-mono text-primary">342</span></div><div class="flex items-center gap-1.5"><span class="font-label-md text-label-md">Throughput:</span><span class="font-label-md text-label-md font-mono text-tertiary">4.8k msg/s</span></div></div></div><div class="flex items-center gap-space-md"><button class="w-9 h-9 rounded bg-surface-container border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[18px]">refresh</span></button><button class="w-9 h-9 rounded bg-surface-container border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[18px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-surface min-h-screen px-space-lg py-space-lg"><div class="flex flex-col w-full gap-space-lg">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-label-md text-label-md tracking-wider uppercase">Cluster Beam v26.2</span>
+<span class="text-on-surface-variant font-label-md text-label-md">•</span>
+<span class="text-on-surface-variant font-label-md text-label-md font-mono">Nodo: p17@game-cluster-01</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Centro de Supervisión Erlang/OTP</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Telemetría operativa, pools de estado <span class="font-mono text-tertiary">gen_statem</span> y monitoreo de colas distribuidas.</p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center gap-2 px-space-md py-2 rounded-lg bg-surface-container-low shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface font-mono">BEAM Schedulers: 16/16 Online</span>
+</div>
+<button class="flex items-center gap-2 px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container font-label-lg text-label-lg shadow-md hover:bg-tertiary transition-colors">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Forzar Recolección de Basura</span>
+</button>
+</div>
+</div>
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Partidas Activas</span>
+<span class="font-display-lg text-display-lg text-primary tracking-tight mt-1 font-mono leading-none">3</span>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-high text-tertiary font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Saludable</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between font-label-md text-label-md text-on-surface-variant">
+<span>Capacidad de sesiones</span>
+<span class="text-on-surface font-mono">0.6% de carga</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden mt-1.5">
+<div class="bg-primary h-full w-[3%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">En Cola / Matchmaking</span>
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight mt-1 font-mono leading-none">2</span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-[20px]">hourglass_top</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between font-label-md text-label-md text-on-surface-variant">
+<span>Tiempo medio en espera</span>
+<span class="text-tertiary font-mono">1.8 segundos</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden mt-1.5">
+<div class="bg-tertiary h-full w-[15%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Duración Promedio</span>
+<div class="flex items-baseline gap-1.5 mt-1">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight font-mono leading-none">4</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-mono">m</span>
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight font-mono leading-none">32</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-mono">s</span>
+</div>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between font-label-md text-label-md text-on-surface-variant">
+<span>Ritmo de jugada</span>
+<span class="text-on-surface font-mono">3.4 s / turno</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden mt-1.5">
+<div class="bg-primary-container h-full w-[65%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Uptime Supervisores</span>
+<span class="font-display-lg text-display-lg text-tertiary tracking-tight mt-1 font-mono leading-none">99.98%</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-1 rounded bg-surface-container-high text-tertiary font-label-md text-label-md font-mono">
+<span class="material-symbols-outlined text-[14px]">format_image_left</span>
+<span>OTP OK</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between font-label-md text-label-md text-on-surface-variant">
+<span>RAM VM: <strong class="text-on-surface font-mono">142 MB</strong></span>
+<span>Proc: <strong class="text-primary font-mono">1,420</strong> / 262k</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden mt-1.5">
+<div class="bg-tertiary h-full w-[0.54%]"></div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-space-lg">
+<div class="xl:col-span-2 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">grid_view</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Partidas Activas en Vivo</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-md text-label-md font-mono">3 sesiones</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+<span>Sincronización socket ETS</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3 px-4">Partida / PID</th>
+<th class="py-3 px-4">Jugadores</th>
+<th class="py-3 px-4">Turno &amp; Jugadas</th>
+<th class="py-3 px-4">Tiempo</th>
+<th class="py-3 px-4">Estado OTP (gen_statem)</th>
+<th class="py-3 px-4">Salud Proceso</th>
+<th class="py-3 px-4 text-right">Acción</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest/20 font-body-md text-body-md text-on-surface">
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-3 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-mono text-primary font-bold">#4892</span>
+<span class="font-label-md text-label-md font-mono text-on-surface-variant">&lt;0.412.0&gt;</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-medium text-on-surface">Ana <span class="text-secondary font-mono font-bold">(X)</span></span>
+<span class="font-label-md text-label-md text-on-surface-variant">vs Carlos <span class="text-tertiary font-mono font-bold">(O)</span></span>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col gap-0.5">
+<div class="inline-flex items-center gap-1.5 text-secondary font-label-md text-label-md font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Turno: Ana</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-mono">5 movimientos</span>
+</div>
+</td>
+<td class="py-3 px-4 font-mono font-label-md text-label-md text-on-surface">
+                  01:45
+                </td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-tertiary font-label-md text-label-md font-mono">
+                    en_curso
+                  </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-high text-tertiary font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                    Saludable
+                  </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded bg-surface-container-high text-primary hover:bg-primary-container hover:text-on-primary-container font-label-md text-label-md transition-colors">
+<span>Ver detalle</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high/40 transition-colors bg-secondary-container/5">
+<td class="py-3 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-mono text-primary font-bold">#4893</span>
+<span class="font-label-md text-label-md font-mono text-on-surface-variant">&lt;0.528.0&gt;</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-medium text-on-surface">Lucía <span class="text-secondary font-mono font-bold">(X)</span></span>
+<span class="font-label-md text-label-md text-on-surface-variant">vs Roberto <span class="text-tertiary font-mono font-bold">(O)</span></span>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col gap-0.5">
+<div class="inline-flex items-center gap-1.5 text-tertiary font-label-md text-label-md font-semibold">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span>Turno: Roberto</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-mono">3 movimientos</span>
+</div>
+</td>
+<td class="py-3 px-4 font-mono font-label-md text-label-md text-on-surface">
+                  03:12
+                </td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-primary font-label-md text-label-md font-mono">
+                    esperando_movimiento
+                  </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-secondary-container text-secondary font-label-md text-label-md font-medium" title="Reiniciado automáticamente por GameSupervisor">
+<span class="material-symbols-outlined text-[14px]">replay</span>
+                    Recuperado por Supervisor
+                  </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded bg-surface-container-high text-primary hover:bg-primary-container hover:text-on-primary-container font-label-md text-label-md transition-colors">
+<span>Ver detalle</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-3 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-mono text-primary font-bold">#4894</span>
+<span class="font-label-md text-label-md font-mono text-on-surface-variant">&lt;0.619.0&gt;</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-medium text-on-surface">Mateo <span class="text-secondary font-mono font-bold">(X)</span></span>
+<span class="font-label-md text-label-md text-on-surface-variant">vs Elena <span class="text-tertiary font-mono font-bold">(O)</span></span>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col gap-0.5">
+<div class="inline-flex items-center gap-1.5 text-secondary font-label-md text-label-md font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Turno: Mateo</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-mono">1 movimiento</span>
+</div>
+</td>
+<td class="py-3 px-4 font-mono font-label-md text-label-md text-on-surface">
+                  00:24
+                </td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-tertiary font-label-md text-label-md font-mono">
+                    en_curso
+                  </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-high text-tertiary font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                    Saludable
+                  </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded bg-surface-container-high text-primary hover:bg-primary-container hover:text-on-primary-container font-label-md text-label-md transition-colors">
+<span>Ver detalle</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-space-sm bg-surface-container flex items-center justify-between text-on-surface-variant font-label-md text-label-md px-4">
+<span>Mostrando 3 de 3 partidas concurrentes</span>
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-tertiary"></span> 2 Estables</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> 1 Auto-reparada</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]">account_tree</span>
+<h3 class="font-title-md text-title-md text-on-surface">Árbol de Supervisión Erlang/OTP</h3>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-mono">Estrategia Global: rest_for_one</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm mt-2">
+<div class="bg-surface-container rounded-lg p-space-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-lg text-label-lg font-mono text-primary font-bold">P17.GameSupervisor</span>
+<span class="w-2 h-2 rounded-full bg-tertiary" title="Estado: Saludable"></span>
+</div>
+<div class="mt-2 text-on-surface-variant font-label-md text-label-md flex flex-col gap-0.5">
+<span>Estrategia: <span class="font-mono text-on-surface">one_for_all</span></span>
+<span>Intensidad: <span class="font-mono text-on-surface">5 reinicios / 60s</span></span>
+<span class="text-tertiary mt-1 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Saludable
+              </span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-space-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-lg text-label-lg font-mono text-primary font-bold">P17.Matchmaking</span>
+<span class="w-2 h-2 rounded-full bg-tertiary" title="Estado: Saludable"></span>
+</div>
+<div class="mt-2 text-on-surface-variant font-label-md text-label-md flex flex-col gap-0.5">
+<span>Estrategia: <span class="font-mono text-on-surface">one_for_one</span></span>
+<span>Cola ETS: <span class="font-mono text-on-surface">2 entradas</span></span>
+<span class="text-tertiary mt-1 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Saludable
+              </span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-space-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-lg text-label-lg font-mono text-primary font-bold">P17.SessionRegistry</span>
+<span class="w-2 h-2 rounded-full bg-tertiary" title="Estado: Saludable"></span>
+</div>
+<div class="mt-2 text-on-surface-variant font-label-md text-label-md flex flex-col gap-0.5">
+<span>Tipo: <span class="font-mono text-on-surface">Distributed ETS</span></span>
+<span>Registros: <span class="font-mono text-on-surface">3 PIDs vinculados</span></span>
+<span class="text-tertiary mt-1 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Saludable
+              </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">notifications_active</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Actividad &amp; Alertas</h2>
+</div>
+<span class="font-label-md text-label-md font-mono text-tertiary">18 ms ping medio</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm flex flex-col gap-space-md h-full">
+<div class="flex flex-col gap-space-sm">
+<div class="p-3 rounded-lg bg-surface-container flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-secondary font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-[16px]">healing</span>
+<span>Alerta Resuelta • OTP Failover</span>
+</div>
+<span class="font-mono text-on-surface-variant font-label-md text-label-md">11:42:09</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-snug">
+              Supervisor reinició el proceso <span class="font-mono text-primary font-bold">&lt;0.528.0&gt;</span> (partida <span class="font-mono text-primary">#4893</span>) tras excepción transitoria.
+            </p>
+<div class="px-2 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-md text-label-md font-mono flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">database</span>
+<span>Estado restaurado desde Mnesia sin pérdida de jugadas.</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-tertiary font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-[16px]">join_right</span>
+<span>Matchmaking Exitoso</span>
+</div>
+<span class="font-mono text-on-surface-variant font-label-md text-label-md">11:44:18</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+              Emparejamiento completado para partida <span class="font-mono text-primary font-semibold">#4894</span>.
+            </p>
+<span class="font-label-md text-label-md text-on-surface-variant">Mateo asignado a piezas X, Elena asignada a piezas O.</span>
+</div>
+<div class="p-3 rounded-lg bg-surface-container flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-primary font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-[16px]">network_ping</span>
+<span>Métricas de Red BEAM</span>
+</div>
+<span class="font-mono text-on-surface-variant font-label-md text-label-md">En vivo</span>
+</div>
+<div class="flex items-center justify-between text-on-surface font-label-md text-label-md pt-1">
+<span>Latencia media de sockets:</span>
+<span class="font-mono text-tertiary font-bold">18 ms</span>
+</div>
+<div class="flex items-center justify-between text-on-surface font-label-md text-label-md">
+<span>Paquetes WebSocket / seg:</span>
+<span class="font-mono text-on-surface">324 msg/s</span>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-3 border-t border-surface-container-highest/30 flex flex-col gap-2">
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<span>Uso de Memoria Erlang VM</span>
+<span class="text-on-surface font-mono">142 MB / 4 GB</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden flex">
+<div class="bg-primary h-full w-[12%]" title="Procesos: 48 MB"></div>
+<div class="bg-tertiary h-full w-[8%]" title="ETS Tables: 32 MB"></div>
+<div class="bg-secondary h-full w-[4%]" title="Código / Binarios: 16 MB"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md text-[11px] pt-1">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> Heap</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-tertiary"></span> ETS</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> Binarios</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

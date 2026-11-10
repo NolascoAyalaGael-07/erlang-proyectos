@@ -1,0 +1,19 @@
+[Unit]
+Description=P17 game server
+After=network.target
+
+[Service]
+Type=simple
+User=p17
+Group=p17
+WorkingDirectory=/opt/p17
+StateDirectory=p17
+Environment=ERL_CRASH_DUMP=/var/lib/p17/erl_crash.dump
+ExecStart=/opt/p17/bin/p17_servidor_de_juego foreground
+ExecStop=/opt/p17/bin/p17_servidor_de_juego stop
+Restart=on-failure
+RestartSec=5s
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

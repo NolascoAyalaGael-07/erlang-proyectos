@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servidor de Juego P17 - Tres en Raya</title>
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      --surface: rgba(30, 41, 59, 0.85);
+      --surface-card: #1e293b;
+      --surface-border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-hover: #0284c7;
+      --accent-x: #f43f5e;
+      --accent-o: #38bdf8;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-family);
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 1.5rem 1rem 2.5rem;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Header & Health status */
+    header {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .admin-link {
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .admin-link:hover {
+      color: #7dd3fc;
+      text-decoration: underline;
+    }
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .brand-subtitle {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--surface-border);
+      border-radius: 9999px;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--warning);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .status-dot.online {
+      background-color: var(--success);
+      box-shadow: 0 0 10px var(--success);
+    }
+
+    .status-dot.offline {
+      background-color: var(--danger);
+      box-shadow: 0 0 10px var(--danger);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      transition: all 0.25s ease;
+    }
+
+    /* Form Screen */
+    .form-group {
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge-player {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .badge-p1 {
+      background: rgba(244, 63, 94, 0.2);
+      color: var(--accent-x);
+      border: 1px solid rgba(244, 63, 94, 0.4);
+    }
+    .badge-p2 {
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--accent-o);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      background: #0f172a;
+      border: 1.5px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      color: #fff;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.85rem 1.5rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s, opacity 0.2s, box-shadow 0.2s;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #0f172a;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: #7dd3fc;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #334155;
+      color: #fff;
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: #475569;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Notification & Alert Message Bar */
+    .alert-box {
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: none;
+      margin-bottom: 1rem;
+      word-break: break-word;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .alert-box.info {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #7dd3fc;
+      display: block;
+    }
+
+    .alert-box.error {
+      background: rgba(239, 68, 68, 0.18);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      display: block;
+    }
+
+    .alert-box.success {
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+      display: block;
+    }
+
+    /* Game Screen */
+    .game-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .game-id-badge {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      background: #0f172a;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--surface-border);
+      font-family: monospace;
+      font-weight: 700;
+    }
+
+    .players-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .player-card {
+      background: #0f172a;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .player-card.active-turn {
+      border-color: var(--primary);
+      background: rgba(56, 189, 248, 0.08);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+    }
+
+    .player-card.winner {
+      border-color: var(--success);
+      background: rgba(16, 185, 129, 0.12);
+      box-shadow: 0 0 18px rgba(16, 185, 129, 0.3);
+    }
+
+    .player-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .player-sym {
+      font-size: 1.25rem;
+      font-weight: 900;
+    }
+    .sym-x { color: var(--accent-x); }
+    .sym-o { color: var(--accent-o); }
+
+    .player-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .player-turn-indicator {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Turn Banner */
+    .turn-announcer {
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      padding: 0.65rem 1rem;
+      border-radius: 10px;
+      background: #0f172a;
+      border: 1px solid var(--surface-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    /* Board 3x3 */
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 360px;
+      margin: 0 auto 1.5rem;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+    }
+
+    .cell-btn {
+      background: #0f172a;
+      border: 2px solid var(--surface-border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      padding: 0;
+    }
+
+    .cell-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: #1e293b;
+      transform: scale(1.02);
+    }
+
+    .cell-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .cell-btn:focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .cell-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    /* Empty position badge */
+    .cell-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #475569;
+      pointer-events: none;
+      transition: color 0.15s;
+    }
+
+    .cell-btn:hover:not(:disabled) .cell-number {
+      color: var(--text-muted);
+    }
+
+    /* Occupied marks */
+    .cell-symbol {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1;
+      animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.4); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .cell-symbol.x {
+      color: var(--accent-x);
+    }
+
+    .cell-symbol.o {
+      color: var(--accent-o);
+    }
+
+    .action-row {
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 480px) {
+      body {
+        padding: 0.75rem 0.5rem 2rem;
+      }
+      .card {
+        padding: 1.25rem 1rem;
+      }
+      .board-grid {
+        max-width: 300px;
+        gap: 8px;
+      }
+      .cell-symbol {
+        font-size: 2.5rem;
+      }
+      .cell-number {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header with server health status -->
+    <header>
+      <div class="brand-title">
+        <span>Tres en raya</span>
+        <span class="brand-subtitle">Servidor de Juego P17</span>
+      </div>
+      <div class="header-actions">
+        <a class="admin-link" href="/admin">Administración</a>
+        <div class="status-badge" id="health-badge" aria-live="polite">
+          <span class="status-dot" id="health-dot" title="Comprobando servidor..."></span>
+          <span id="health-text">Comprobando...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Global alert banner for messages & errors -->
+    <div id="global-alert" class="alert-box" role="alert" aria-live="assertive"></div>
+
+    <!-- VIEW 1: Initial Form to Create Game -->
+    <main id="view-create" class="card">
+      <h2 style="font-size: 1.25rem; margin-bottom: 1.25rem; font-weight: 700;">Nueva partida</h2>
+    
+      <form id="form-create-game">
+        <div class="form-group">
+          <label for="input-jugador1">
+            <span class="badge-player badge-p1">Ficha X</span> Nombre del Jugador 1:
+          </label>
+          <input type="text" id="input-jugador1" name="jugador1" placeholder="Ej. Ana" required autocomplete="off" maxlength="30">
+        </div>
+
+        <div class="form-group">
+          <label for="input-jugador2">
+            <span class="badge-player badge-p2">Ficha O</span> Nombre del Jugador 2:
+          </label>
+          <input type="text" id="input-jugador2" name="jugador2" placeholder="Ej. Carlos" required autocomplete="off" maxlength="30">
+        </div>
+
+        <button type="submit" id="btn-create-game" class="btn btn-primary" style="margin-top: 0.75rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          Crear partida
+        </button>
+      </form>
+    </main>
+
+    <!-- VIEW 2: Active Game Screen -->
+    <main id="view-game" class="card" style="display: none;">
+      <!-- Game Info Header -->
+      <div class="game-meta">
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">Identificador de partida</span>
+          <span class="game-id-badge" id="label-game-id">-</span>
+        </div>
+        <button type="button" id="btn-reset-game" class="btn btn-secondary" style="width: auto; padding: 0.45rem 1rem; font-size: 0.85rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+          Nueva partida
+        </button>
+      </div>
+
+      <!-- Players cards -->
+      <div class="players-container">
+        <div class="player-card" id="card-player1">
+          <div class="player-header">
+            <span class="badge-player badge-p1">Jugador 1</span>
+            <span class="player-sym sym-x">X</span>
+          </div>
+          <div class="player-name" id="name-player1">Jugador 1</div>
+          <div class="player-turn-indicator" id="turn-p1" style="display: none;">
+            <span>● Es su turno</span>
+          </div>
+        </div>
+
+        <div class="player-card" id="card-player2">
+          <div class="player-header">
+            <span class="badge-player badge-p2">Jugador 2</span>
+            <span class="player-sym sym-o">O</span>
+          </div>
+          <div class="player-name" id="name-player2">Jugador 2</div>
+          <div class="player-turn-indicator" id="turn-p2" style="display: none;">
+            <span>● Es su turno</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Turn status banner -->
+      <div class="turn-announcer" id="turn-announcer">
+        Cargando estado...
+      </div>
+
+      <!-- 3x3 Board -->
+      <div class="board-grid" id="board" role="grid" aria-label="Tablero de juego 3 por 3">
+        <!-- Cells 1 through 9 -->
+        <button type="button" class="cell-btn" data-pos="1" aria-label="Casilla 1"><span class="cell-number">1</span></button>
+        <button type="button" class="cell-btn" data-pos="2" aria-label="Casilla 2"><span class="cell-number">2</span></button>
+        <button type="button" class="cell-btn" data-pos="3" aria-label="Casilla 3"><span class="cell-number">3</span></button>
+        <button type="button" class="cell-btn" data-pos="4" aria-label="Casilla 4"><span class="cell-number">4</span></button>
+        <button type="button" class="cell-btn" data-pos="5" aria-label="Casilla 5"><span class="cell-number">5</span></button>
+        <button type="button" class="cell-btn" data-pos="6" aria-label="Casilla 6"><span class="cell-number">6</span></button>
+        <button type="button" class="cell-btn" data-pos="7" aria-label="Casilla 7"><span class="cell-number">7</span></button>
+        <button type="button" class="cell-btn" data-pos="8" aria-label="Casilla 8"><span class="cell-number">8</span></button>
+        <button type="button" class="cell-btn" data-pos="9" aria-label="Casilla 9"><span class="cell-number">9</span></button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // App State
+    let currentGameId = null;
+    let player1Name = '';
+    let player2Name = '';
+    let currentTurnPlayer = '';
+    let isGameOver = false;
+    let isRequestInProgress = false;
+    let gameEventsSocket;
+    let gameEventsReconnect;
+
+    // DOM Elements
+    const healthBadge = document.getElementById('health-badge');
+    const healthDot = document.getElementById('health-dot');
+    const healthText = document.getElementById('health-text');
+    const globalAlert = document.getElementById('global-alert');
+
+    const viewCreate = document.getElementById('view-create');
+    const viewGame = document.getElementById('view-game');
+    const formCreateGame = document.getElementById('form-create-game');
+    const inputJugador1 = document.getElementById('input-jugador1');
+    const inputJugador2 = document.getElementById('input-jugador2');
+    const btnCreateGame = document.getElementById('btn-create-game');
+    const btnResetGame = document.getElementById('btn-reset-game');
+
+    const labelGameId = document.getElementById('label-game-id');
+    const namePlayer1 = document.getElementById('name-player1');
+    const namePlayer2 = document.getElementById('name-player2');
+    const cardPlayer1 = document.getElementById('card-player1');
+    const cardPlayer2 = document.getElementById('card-player2');
+    const turnIndicatorP1 = document.getElementById('turn-p1');
+    const turnIndicatorP2 = document.getElementById('turn-p2');
+    const turnAnnouncer = document.getElementById('turn-announcer');
+    const boardCells = document.querySelectorAll('.cell-btn');
+
+    // UI Helpers
+    function showAlert(message, type = 'info', autoClear = true) {
+      globalAlert.textContent = message;
+      globalAlert.className = `alert-box ${type}`;
+      globalAlert.style.display = 'block';
+
+      if (autoClear && type !== 'error') {
+        setTimeout(() => {
+          if (globalAlert.textContent === message) {
+            clearAlert();
+          }
+        }, 5000);
+      }
+    }
+
+    function clearAlert() {
+      globalAlert.style.display = 'none';
+      globalAlert.textContent = '';
+      globalAlert.className = 'alert-box';
+    }
+
+    // 1. Health check: GET /health
+    async function checkHealth() {
+      try {
+        const response = await fetch('/health');
+        if (response.ok) {
+          healthDot.className = 'status-dot online';
+          healthText.textContent = 'En línea';
+          healthBadge.title = 'Conectado con el servidor P17';
+        } else {
+          throw new Error('Estado no disponible');
+        }
+      } catch (err) {
+        healthDot.className = 'status-dot offline';
+        healthText.textContent = 'Desconectado';
+        healthBadge.title = 'No se pudo conectar con el servidor';
+      }
+    }
+
+    // 2. Parse errors from API responses
+    async function extractErrorMessage(response, defaultMsg) {
+      try {
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const data = await response.json();
+          return data.error || data.mensaje || data.message || defaultMsg;
+        } else {
+          const text = await response.text();
+          return text || defaultMsg;
+        }
+      } catch (e) {
+        return defaultMsg;
+      }
+    }
+
+    // 3. Create Game: POST /api/partidas?jugador1=NOMBRE1&jugador2=NOMBRE2
+    formCreateGame.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const p1 = inputJugador1.value.trim();
+      const p2 = inputJugador2.value.trim();
+
+      if (!p1 || !p2) {
+        showAlert('Por favor, ingresa los nombres de ambos jugadores.', 'error');
+        return;
+      }
+
+      if (p1.toLowerCase() === p2.toLowerCase()) {
+        showAlert('Los nombres de los jugadores deben ser diferentes.', 'error');
+        return;
+      }
+
+      clearAlert();
+      btnCreateGame.disabled = true;
+      btnCreateGame.textContent = 'Creando partida...';
+
+      try {
+        const url = `/api/partidas?jugador1=${encodeURIComponent(p1)}&jugador2=${encodeURIComponent(p2)}`;
+        const response = await fetch(url, {
+          method: 'POST'
+        });
+
+        if (!response.ok) {
+          const errorMsg = await extractErrorMessage(response, `Error ${response.status}: no se pudo crear la partida.`);
+          throw new Error(errorMsg);
+        }
+
+        const data = await response.json();
+        // Server response includes "id" and "partida"
+        currentGameId = data.id || (data.partida && data.partida.id);
+        player1Name = p1;
+        player2Name = p2;
+
+        initGameView(currentGameId, player1Name, player2Name);
+        renderGameState(data.partida || data);
+        showAlert(`¡Partida #${currentGameId} creada con éxito!`, 'success');
+      } catch (err) {
+        showAlert(err.message || 'Error al conectar con el servidor para crear la partida.', 'error');
+      } finally {
+        btnCreateGame.disabled = false;
+        btnCreateGame.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          Crear partida
+        `;
+      }
+    });
+
+    // 4. Initialize Game View
+    function initGameView(id, p1, p2) {
+      isGameOver = false;
+      labelGameId.textContent = `#${id}`;
+      namePlayer1.textContent = p1;
+      namePlayer2.textContent = p2;
+
+      // Reset cells to show numbers 1 to 9
+      boardCells.forEach((cell, idx) => {
+        const pos = idx + 1;
+        cell.disabled = false;
+        cell.dataset.pos = pos;
+        cell.innerHTML = `<span class="cell-number">${pos}</span>`;
+        cell.setAttribute('aria-label', `Casilla ${pos}, vacía`);
+      });
+
+      viewCreate.style.display = 'none';
+      viewGame.style.display = 'block';
+    }
+
+    // 5. Render Board & State from Server Data
+    function renderGameState(partida) {
+  if (!partida) return;
+
+  // La API entrega el estado del juego dentro de partida.datos.
+  const datos = partida.datos || partida;
+  const rawBoard = datos.tablero || partida.tablero || [];
+
+  let turno = datos.turno || partida.turno || '';
+  if (turno === 1 || turno === '1') turno = player1Name;
+  if (turno === 2 || turno === '2') turno = player2Name;
+
+  const ganador = datos.ganador || partida.ganador || null;
+  const estado = String(partida.estado || datos.estado || '').toLowerCase();
+  const esEmpate = Boolean(
+    datos.empate ||
+    datos.esEmpate ||
+    datos.draw ||
+    estado === 'empate'
+  );
+  const terminada = Boolean(
+    datos.terminada ||
+    datos.finalizada ||
+    datos.gameOver ||
+    partida.terminada ||
+    partida.finalizada ||
+    partida.gameOver ||
+    estado === 'terminado' ||
+    estado === 'finalizada' ||
+    estado === 'finalizado' ||
+    ganador ||
+    esEmpate
+  );
+
+  isGameOver = terminada;
+  currentTurnPlayer = turno || (terminada ? '' : player1Name);
+
+  cardPlayer1.classList.remove('active-turn', 'winner');
+  cardPlayer2.classList.remove('active-turn', 'winner');
+
+  boardCells.forEach((cell, index) => {
+    const pos = index + 1;
+    const value = Array.isArray(rawBoard) ? rawBoard[index] : null;
+    const texto = value === null || value === undefined
+      ? ''
+      : String(value).trim();
+    const textoMinuscula = texto.toLowerCase();
+
+    const vacia =
+      texto === '' ||
+      texto === '0' ||
+      textoMinuscula === 'vacio' ||
+      textoMinuscula === 'vacío' ||
+      textoMinuscula === 'empty';
+
+    if (!vacia) {
+      const esJugador1 =
+        textoMinuscula === player1Name.toLowerCase() ||
+        textoMinuscula === 'x' ||
+        texto === '1';
+      const simbolo = esJugador1 ? 'X' : 'O';
+      const clase = esJugador1 ? 'x' : 'o';
+
+      cell.innerHTML = `<span class="cell-symbol ${clase}">${simbolo}</span>`;
+      cell.disabled = true;
+      cell.setAttribute('aria-label', `Casilla ${pos}, ocupada con ${simbolo}`);
+    } else {
+      cell.innerHTML = `<span class="cell-number">${pos}</span>`;
+      cell.disabled = isGameOver;
+      cell.setAttribute('aria-label', `Casilla ${pos}, vacía`);
+    }
+  });
+
+  turnIndicatorP1.style.display = 'none';
+  turnIndicatorP2.style.display = 'none';
+
+  if (ganador) {
+    const ganadorTexto = String(ganador);
+    const winnerName =
+      ganadorTexto === 'X' || ganadorTexto === '1'
+        ? player1Name
+        : ganadorTexto === 'O' || ganadorTexto === '2'
+          ? player2Name
+          : ganadorTexto;
+
+    turnAnnouncer.innerHTML =
+      `<span style="color: var(--success);">¡Ganador: ${escapeHtml(winnerName)}!</span>`;
+    showAlert(`¡Partida terminada! El ganador es ${winnerName}.`, 'success', false);
+
+    if (winnerName.toLowerCase() === player1Name.toLowerCase()) {
+      cardPlayer1.classList.add('winner');
+    } else if (winnerName.toLowerCase() === player2Name.toLowerCase()) {
+      cardPlayer2.classList.add('winner');
+    }
+    return;
+  }
+
+  if (esEmpate || (terminada && !ganador)) {
+    turnAnnouncer.textContent = 'La partida terminó en empate.';
+    showAlert('La partida ha finalizado en empate.', 'info', false);
+    return;
+  }
+
+  const turnoEsJugador1 =
+    currentTurnPlayer.toLowerCase() === player1Name.toLowerCase();
+
+  if (turnoEsJugador1) {
+    cardPlayer1.classList.add('active-turn');
+    turnIndicatorP1.style.display = 'flex';
+    turnAnnouncer.innerHTML =
+      `Turno de: <span style="color: var(--accent-x);">${escapeHtml(player1Name)} (X)</span>`;
+  } else {
+    cardPlayer2.classList.add('active-turn');
+    turnIndicatorP2.style.display = 'flex';
+    turnAnnouncer.innerHTML =
+      `Turno de: <span style="color: var(--accent-o);">${escapeHtml(player2Name)} (O)</span>`;
+  }
+}
+
+    function disableAllCells() {
+      boardCells.forEach(cell => {
+        cell.disabled = true;
+      });
+    }
+
+    // 6. Cell click -> Make move
+    // POST /api/partidas/ID/movimientos?jugador=NOMBRE&posicion=NUMERO
+    boardCells.forEach(cell => {
+      cell.addEventListener('click', async () => {
+        if (isGameOver || isRequestInProgress) return;
+
+        const pos = cell.dataset.pos;
+        if (!pos) return;
+
+        // Determine current moving player
+        const movingPlayer = currentTurnPlayer || player1Name;
+
+        isRequestInProgress = true;
+        clearAlert();
+
+        try {
+          const url = `/api/partidas/${encodeURIComponent(currentGameId)}/movimientos?jugador=${encodeURIComponent(movingPlayer)}&posicion=${encodeURIComponent(pos)}`;
+        
+          const response = await fetch(url, {
+            method: 'POST'
+          });
+
+          if (!response.ok) {
+            let errorText = await extractErrorMessage(response, 'Error al registrar el movimiento.');
+          
+            // Helpful translation of known status codes
+            if (response.status === 400 || response.status === 409) {
+              if (errorText.toLowerCase().includes('ocupada')) {
+                errorText = `La casilla ${pos} ya está ocupada.`;
+              } else if (errorText.toLowerCase().includes('turno')) {
+                errorText = `No es el turno de ${movingPlayer}.`;
+              }
+            }
+            throw new Error(errorText);
+          }
+
+          const data = await response.json();
+          renderGameState(data.partida || data);
+
+        } catch (err) {
+          showAlert(err.message || 'Error al procesar el movimiento.', 'error');
+          // Refresh state from server to sync if desynchronized
+          syncGameState();
+        } finally {
+          isRequestInProgress = false;
+        }
+      });
+    });
+
+    // 7. GET /api/partidas/ID - Fetch latest state
+    async function syncGameState() {
+      if (!currentGameId) return;
+      try {
+        const response = await fetch(`/api/partidas/${encodeURIComponent(currentGameId)}`);
+        if (response.ok) {
+          const data = await response.json();
+          renderGameState(data.partida || data);
+        }
+      } catch (e) {
+        // silent sync fail
+      }
+    }
+
+    function connectGameEvents() {
+      if (gameEventsSocket &&
+          (gameEventsSocket.readyState === WebSocket.OPEN ||
+           gameEventsSocket.readyState === WebSocket.CONNECTING)) {
+        return;
+      }
+
+      const scheme = location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const socket = new WebSocket(`${scheme}//${location.host}/ws/juego`);
+      gameEventsSocket = socket;
+      socket.addEventListener('message', event => {
+        try {
+          const aviso = JSON.parse(event.data);
+          if (!currentGameId || aviso.id !== currentGameId) return;
+          if (aviso.evento === 'partida_actualizada' && !isRequestInProgress) {
+            void syncGameState();
+          } else if (aviso.evento === 'partida_caida') {
+            isGameOver = true;
+            disableAllCells();
+            turnAnnouncer.textContent = 'La partida se interrumpió por una caída del servidor.';
+            showAlert(
+              'La partida se cayó. Puedes regresar al lobby e iniciar otra.',
+              'error',
+              false
+            );
+          }
+        } catch (error) {
+          showAlert(`Aviso en tiempo real inválido: ${error.message}`, 'error');
+        }
+      });
+      socket.addEventListener('close', () => {
+        if (gameEventsSocket !== socket) return;
+        gameEventsSocket = undefined;
+        clearTimeout(gameEventsReconnect);
+        gameEventsReconnect = setTimeout(connectGameEvents, 3000);
+      });
+    }
+
+    // 8. Reset to Form: "Nueva partida"
+    btnResetGame.addEventListener('click', () => {
+      clearAlert();
+      currentGameId = null;
+      isGameOver = false;
+      cardPlayer1.classList.remove('active-turn', 'winner');
+      cardPlayer2.classList.remove('active-turn', 'winner');
+      viewGame.style.display = 'none';
+      viewCreate.style.display = 'block';
+      inputJugador1.focus();
+    });
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    // Initial server connection test & periodic ping
+    checkHealth();
+    setInterval(checkHealth, 20000);
+    connectGameEvents();
+  </script>
+</body>
+</html>

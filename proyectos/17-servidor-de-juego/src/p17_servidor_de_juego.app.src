@@ -1,8 +1,15 @@
 {application, p17_servidor_de_juego, [
-  {description, "Servidor de juego"},
-  {vsn, "0.1.0"},
-  {registered, [p17_servidor_de_juego_sup, p17_servidor_de_juego_server]},
-  {mod, {p17_servidor_de_juego_app, []}},
-  {applications, [kernel, stdlib, cowboy, recon]},
-  {env, []}
+    {description, "Servidor de juego"},
+    {vsn, "0.1.0"},
+    {registered, [
+        p17_servidor_de_juego_sup,
+        p17_servidor_de_juego_server,
+        p17_partidas_sup,
+        p17_eventos,
+        p17_matchmaking,
+        p17_http_server
+    ]},
+    {mod, {p17_servidor_de_juego_app, []}},
+    {applications, [kernel, stdlib, cowboy, recon]},
+    {env, []}
 ]}.

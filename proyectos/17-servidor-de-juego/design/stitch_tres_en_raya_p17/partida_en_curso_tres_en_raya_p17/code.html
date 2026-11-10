@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Servidor de Juego P17 - Partida en curso</title>
+<!-- Tailwind CSS CDN v3 con plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            app: {
+              bg: '#12142b',
+              card: '#1e2338',
+              cardBorder: '#2e3553',
+              inputBg: '#131726',
+              inputBorder: '#272f48',
+              badgeX: '#f43f5e',
+              badgeO: '#0ea5e9',
+              accentCyan: '#38bdf8'
+            }
+          },
+          boxShadow: {
+            'glow-cyan': '0 0 24px -2px rgba(56, 189, 248, 0.45)',
+            'glow-turn': '0 0 16px -1px rgba(244, 63, 94, 0.35)',
+            'glow-green': '0 0 10px 1px rgba(34, 197, 94, 0.65)'
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-enhancements">
+    /* Gradientes suaves y sutiles acordes a la estética dark de la imagen */
+    .bg-main-glow {
+      background: radial-gradient(circle at 50% 20%, #1f2545 0%, #111326 65%, #0b0d1b 100%);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-main-glow text-slate-100 flex flex-col items-center justify-center p-4 sm:p-6 antialiased selection:bg-sky-500 selection:text-white">
+<!-- BEGIN: MainContainer -->
+<main class="w-full max-w-[620px] flex flex-col gap-5 my-auto" data-purpose="game-wrapper">
+<!-- BEGIN: HeaderCard -->
+<header class="bg-[#1e2338]/90 border border-[#2e3553] rounded-2xl px-6 py-4 flex items-center justify-between shadow-xl backdrop-blur-sm" data-purpose="top-header">
+<!-- Title & Subtitle block -->
+<div>
+<h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white">Tres en raya P17</h1>
+<p class="text-[11px] sm:text-xs font-semibold tracking-wider text-slate-400 uppercase mt-0.5">Servidor de Juego P17</p>
+</div>
+<!-- Online Status Badge -->
+<div class="flex items-center gap-2 bg-[#121528] border border-[#282f4d] px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-200 shadow-inner" data-purpose="connection-status">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-glow-green"></span>
+</span>
+<span>Conectado</span>
+</div>
+</header>
+<!-- END: HeaderCard -->
+<!-- BEGIN: GameCard -->
+<section class="bg-[#1e2338]/90 border border-[#2e3553] rounded-2xl p-6 sm:p-7 shadow-2xl backdrop-blur-sm flex flex-col gap-6" data-purpose="active-match-card">
+<!-- Top Match Meta & Players -->
+<div class="flex flex-col gap-4 border-b border-[#2a314c] pb-5" data-purpose="match-info-header">
+<!-- Game Title and Match ID -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<h2 class="text-xl font-bold text-white tracking-wide">Partida en curso</h2>
+</div>
+<span class="text-xs font-semibold bg-[#131728] text-sky-400 border border-[#2a3556] px-3 py-1 rounded-full uppercase tracking-wider">
+            ID: #4892
+          </span>
+</div>
+<!-- Players Display and Turn Tracker -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3" data-purpose="player-status-row">
+<!-- Player 1 (Ana - X) - Active Turn -->
+<div class="relative flex items-center justify-between bg-[#141829] border-2 border-rose-500/70 shadow-glow-turn rounded-xl px-4 py-2.5 transition-all">
+<div class="flex items-center gap-2.5">
+<span class="bg-[#e11d48] text-white text-[11px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">
+                Ficha X
+              </span>
+<span class="font-semibold text-slate-100 text-sm">Ana</span>
+</div>
+<!-- Turn Tag -->
+<span class="text-[11px] font-bold text-rose-300 bg-rose-950/60 border border-rose-800/60 px-2 py-0.5 rounded-md uppercase animate-pulse">
+              Turno actual
+            </span>
+</div>
+<!-- Player 2 (Carlos - O) - Waiting -->
+<div class="flex items-center justify-between bg-[#141829]/60 border border-[#272f48] rounded-xl px-4 py-2.5 opacity-75">
+<div class="flex items-center gap-2.5">
+<span class="bg-[#0284c7] text-white text-[11px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">
+                Ficha O
+              </span>
+<span class="font-semibold text-slate-300 text-sm">Carlos</span>
+</div>
+<span class="text-[11px] text-slate-400">En espera</span>
+</div>
+</div>
+<!-- Instruction text -->
+<p class="text-xs text-slate-400 text-center sm:text-left mt-1">
+          Selecciona una casilla vacía numerada para realizar tu movimiento.
+        </p>
+</div>
+<!-- BEGIN: BoardSection -->
+<div class="w-full flex justify-center py-2" data-purpose="tictactoe-board-container">
+<!-- 3x3 Grid Board -->
+<div class="grid grid-cols-3 gap-3.5 w-full max-w-[340px] aspect-square" data-purpose="grid-board">
+<!-- Cell 1: Occupied by X -->
+<div class="bg-[#131726] border border-[#272f4a] rounded-xl flex items-center justify-center select-none shadow-inner" data-cell-index="1">
+<span class="text-5xl font-extrabold text-[#f43f5e] drop-shadow-[0_2px_8px_rgba(244,63,94,0.35)]">X</span>
+</div>
+<!-- Cell 2: Empty with number 2 -->
+<button aria-label="Casilla 2 vacía" class="bg-[#15192b] border border-[#272f48] hover:border-sky-400 hover:bg-[#1a2139] active:scale-95 transition-all duration-150 rounded-xl flex items-center justify-center text-slate-500 font-bold text-2xl group focus:outline-none focus:ring-2 focus:ring-sky-400" data-cell-index="2" type="button">
+<span class="group-hover:text-sky-300 transition-colors">2</span>
+</button>
+<!-- Cell 3: Occupied by O -->
+<div class="bg-[#131726] border border-[#272f4a] rounded-xl flex items-center justify-center select-none shadow-inner" data-cell-index="3">
+<span class="text-5xl font-extrabold text-[#38bdf8] drop-shadow-[0_2px_8px_rgba(56,189,248,0.35)]">O</span>
+</div>
+<!-- Cell 4: Empty with number 4 -->
+<button aria-label="Casilla 4 vacía" class="bg-[#15192b] border border-[#272f48] hover:border-sky-400 hover:bg-[#1a2139] active:scale-95 transition-all duration-150 rounded-xl flex items-center justify-center text-slate-500 font-bold text-2xl group focus:outline-none focus:ring-2 focus:ring-sky-400" data-cell-index="4" type="button">
+<span class="group-hover:text-sky-300 transition-colors">4</span>
+</button>
+<!-- Cell 5: Occupied by X -->
+<div class="bg-[#131726] border border-[#272f4a] rounded-xl flex items-center justify-center select-none shadow-inner" data-cell-index="5">
+<span class="text-5xl font-extrabold text-[#f43f5e] drop-shadow-[0_2px_8px_rgba(244,63,94,0.35)]">X</span>
+</div>
+<!-- Cell 6: Empty with number 6 -->
+<button aria-label="Casilla 6 vacía" class="bg-[#15192b] border border-[#272f48] hover:border-sky-400 hover:bg-[#1a2139] active:scale-95 transition-all duration-150 rounded-xl flex items-center justify-center text-slate-500 font-bold text-2xl group focus:outline-none focus:ring-2 focus:ring-sky-400" data-cell-index="6" type="button">
+<span class="group-hover:text-sky-300 transition-colors">6</span>
+</button>
+<!-- Cell 7: Empty with number 7 -->
+<button aria-label="Casilla 7 vacía" class="bg-[#15192b] border border-[#272f48] hover:border-sky-400 hover:bg-[#1a2139] active:scale-95 transition-all duration-150 rounded-xl flex items-center justify-center text-slate-500 font-bold text-2xl group focus:outline-none focus:ring-2 focus:ring-sky-400" data-cell-index="7" type="button">
+<span class="group-hover:text-sky-300 transition-colors">7</span>
+</button>
+<!-- Cell 8: Occupied by O -->
+<div class="bg-[#131726] border border-[#272f4a] rounded-xl flex items-center justify-center select-none shadow-inner" data-cell-index="8">
+<span class="text-5xl font-extrabold text-[#38bdf8] drop-shadow-[0_2px_8px_rgba(56,189,248,0.35)]">O</span>
+</div>
+<!-- Cell 9: Empty with number 9 -->
+<button aria-label="Casilla 9 vacía" class="bg-[#15192b] border border-[#272f48] hover:border-sky-400 hover:bg-[#1a2139] active:scale-95 transition-all duration-150 rounded-xl flex items-center justify-center text-slate-500 font-bold text-2xl group focus:outline-none focus:ring-2 focus:ring-sky-400" data-cell-index="9" type="button">
+<span class="group-hover:text-sky-300 transition-colors">9</span>
+</button>
+</div>
+</div>
+<!-- END: BoardSection -->
+<!-- Action Button matching the reference screen style -->
+<div class="pt-2" data-purpose="actions-footer">
+<button class="w-full bg-[#38bdf8] hover:bg-[#0284c7] active:bg-[#0369a1] text-[#09152e] hover:text-white font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 shadow-glow-cyan transition duration-200 text-base" type="button">
+<!-- Reset / New Game Icon -->
+<svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Nueva partida</span>
+</button>
+</div>
+</section>
+<!-- END: GameCard -->
+</main>
+<!-- END: MainContainer -->
+</body></html>

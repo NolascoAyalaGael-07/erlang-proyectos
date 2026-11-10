@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline-variant":"#3e4850","surface-variant":"#313441","on-tertiary-container":"#003943","inverse-surface":"#dfe2f2","primary-fixed":"#c9e6ff","surface-dim":"#0f131e","tertiary-container":"#00aac6","surface-bright":"#353945","on-surface-variant":"#bec8d2","secondary":"#ffb2b7","on-error":"#690005","secondary-fixed-dim":"#ffb2b7","tertiary-fixed-dim":"#4cd7f6","primary":"#89ceff","inverse-on-surface":"#2c303c","surface-container-high":"#262a36","tertiary-fixed":"#acedff","on-error-container":"#ffdad6","on-tertiary-fixed-variant":"#004e5c","outline":"#88929b","secondary-fixed":"#ffdadb","primary-fixed-dim":"#89ceff","on-secondary":"#67001b","surface-container":"#1b1f2b","on-secondary-fixed":"#40000d","inverse-primary":"#006591","tertiary":"#4cd7f6","on-tertiary":"#003640","error":"#ffb4ab","on-primary-fixed-variant":"#004c6e","primary-container":"#0ea5e9","surface-tint":"#89ceff","on-primary-container":"#003751","secondary-container":"#b50036","error-container":"#93000a","on-secondary-fixed-variant":"#92002a","surface-container-highest":"#313441","background":"#0f131e","surface":"#0f131e","on-tertiary-fixed":"#001f26","on-primary":"#00344d","on-primary-fixed":"#001e2f","on-background":"#dfe2f2","on-surface":"#dfe2f2","surface-container-lowest":"#0a0e19","surface-container-low":"#171b27","on-secondary-container":"#ffc2c4"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-sm":"0.5rem","space-lg":"1.5rem","space-xl":"2rem",margin:"1rem","gutter-lg":"1.5rem","margin-md":"1.5rem","space-xs":"0.25rem",gutter:"1rem","space-md":"1rem","margin-lg":"2.5rem"},fontFamily:{"headline-lg":["Space Grotesk"],"cell-indicator":["Space Grotesk"],"title-md":["Manrope"],"label-md":["Space Grotesk"],"headline-sm":["Space Grotesk"],"display-lg-mobile":["Space Grotesk"],"label-lg":["Space Grotesk"],"display-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg-mobile":["Space Grotesk"],"body-md":["Manrope"],"body-lg":["Manrope"]},fontSize:{"headline-lg":["32px",{lineHeight:"40px",fontWeight:"600"}],"cell-indicator":["18px",{lineHeight:"18px",fontWeight:"700"}],"title-md":["18px",{lineHeight:"24px",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"500"}],"display-lg-mobile":["32px",{lineHeight:"40px",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",fontWeight:"600"}],"display-lg":["48px",{lineHeight:"56px",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"headline-lg-mobile":["24px",{lineHeight:"32px",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col border-r border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-lg flex items-center gap-space-sm border-b border-outline-variant/20"><div class="w-9 h-9 rounded bg-surface-container-high border border-outline-variant/40 flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[20px]">terminal</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-primary leading-none">P17 ADMIN</span><span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mt-1">Erlang / OTP Core</span></div></div><div class="px-space-md py-space-sm"><div class="p-space-sm rounded bg-surface-container border border-outline-variant/30 flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-md text-label-md text-on-surface-variant">SUPERVISOR CLUSTER</span><span class="flex h-2 w-2 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span></span></div><div class="font-label-md text-label-md text-on-surface flex items-center gap-1.5 truncate"><span class="text-tertiary font-bold">●</span> <span class="truncate font-mono">p17@game-node-01</span></div><div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md pt-1 border-t border-outline-variant/20"><span>OTP 26.2</span><span class="text-primary font-mono">Ping: 12ms</span></div></div></div><nav class="flex-1 px-space-md py-space-sm flex flex-col gap-1.5" data-active-classes="bg-primary-container text-on-primary-container font-label-lg shadow-[0_0_16px_rgba(14,165,233,0.25)]"><a class="flex items-center gap-3 px-space-md py-2.5 rounded font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard-en-tiempo-real" href="#"><span class="material-symbols-outlined text-[20px]">monitoring</span>Dashboard en tiempo real</a><a class="flex items-center gap-3 px-space-md py-2.5 rounded font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="detalle-de-partida-otp" href="#"><span class="material-symbols-outlined text-[20px]">hub</span>Detalle de partida (OTP)</a><a class="flex items-center gap-3 px-space-md py-2.5 rounded font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="bitacora-de-eventos-y-alertas" href="#"><span class="material-symbols-outlined text-[20px]">warning</span>Bitácora de eventos y alertas</a></nav><div class="p-space-md border-t border-outline-variant/20 bg-surface-container-lowest/60 flex flex-col gap-2"><div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md"><span>BEAM Processes</span><span class="text-on-surface font-mono">14,289</span></div><div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden"><div class="bg-tertiary h-full w-[42%]"></div></div><div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md"><span>Schedulers Online</span><span class="text-primary font-mono">16 / 16</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-low/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container border border-outline-variant/40"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface uppercase tracking-wide">Nodo online: p17@game-node-01</span></div><div class="hidden xl:flex items-center gap-space-lg text-on-surface-variant border-l border-outline-variant/30 pl-space-md"><div class="flex items-center gap-1.5"><span class="font-label-md text-label-md">ETS Tables:</span><span class="font-label-md text-label-md font-mono text-on-surface">128</span></div><div class="flex items-center gap-1.5"><span class="font-label-md text-label-md">Partidas Activas:</span><span class="font-label-md text-label-md font-mono text-primary">342</span></div><div class="flex items-center gap-1.5"><span class="font-label-md text-label-md">Throughput:</span><span class="font-label-md text-label-md font-mono text-tertiary">4.8k msg/s</span></div></div></div><div class="flex items-center gap-space-md"><button class="w-9 h-9 rounded bg-surface-container border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[18px]">refresh</span></button><button class="w-9 h-9 rounded bg-surface-container border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[18px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-surface min-h-screen px-space-lg py-space-lg"><div class="flex flex-col w-full gap-space-lg">
+<!-- ENCABEZADO DE TELEMETRÍA Y PROCESO -->
+<section class="flex flex-col gap-space-sm bg-surface-container-low p-space-lg rounded-xl shadow-md">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<span class="hover:text-primary transition-colors cursor-pointer">Partidas Activas</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Partida #4892</span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pt-1">
+<div class="flex flex-wrap items-center gap-3">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Partida #4892</h1>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-surface-container-high text-primary font-label-md text-label-md font-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          gen_statem: en_curso
+        </div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-surface-container-high text-tertiary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span>
+          OTP: Saludable
+        </div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container text-on-surface-variant font-label-md text-label-md font-mono">
+<span class="text-outline">PID:</span>
+<span class="text-tertiary-fixed">&lt;0.412.0&gt;</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-primary">account_tree</span>
+<span>Supervisor: <span class="font-mono text-on-surface">P17.GameSupervisor</span></span>
+</div>
+<button class="w-9 h-9 rounded bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-primary transition-all shadow-sm" id="btn-quick-refresh">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+</button>
+</div>
+</div>
+</section>
+<!-- GRID PRINCIPAL DE DOS COLUMNAS -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- COLUMNA IZQUIERDA: MINI TABLERO Y ESTADO DEL JUEGO (5 COLS) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col gap-space-md shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">grid_3x3</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Matriz de Tablero (En Vivo)</span>
+</div>
+<span class="font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-mono">Turno #5</span>
+</div>
+<!-- Indicador de Turno y Temporizador -->
+<div class="flex items-center justify-between p-space-md bg-surface-container rounded-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-secondary-container/40 flex items-center justify-center font-display-lg-mobile text-display-lg-mobile text-secondary font-bold">
+              X
+            </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">TURNO ACTIVO</span>
+<span class="font-title-md text-title-md text-on-surface leading-tight">Ana (Ficha X)</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1.5 font-headline-sm text-headline-sm font-mono text-primary">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+<span id="turn-timer">24s</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">de 30s timeout</span>
+</div>
+</div>
+<!-- Barra de Progreso del Timeout -->
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-4/5 transition-all duration-1000" id="turn-bar"></div>
+</div>
+<!-- Tablero 3x3 -->
+<div class="relative w-full max-w-[340px] mx-auto aspect-square grid grid-cols-3 gap-2 p-2 bg-surface-container-lowest rounded-lg">
+<!-- Casilla 1 (X) -->
+<div class="relative flex items-center justify-center rounded bg-surface-container-high transition-transform duration-200">
+<span class="font-display-lg text-display-lg text-secondary select-none font-bold">X</span>
+<span class="absolute top-1 left-1.5 font-mono text-[10px] text-outline">1</span>
+</div>
+<!-- Casilla 2 (Vacía) -->
+<div class="relative flex items-center justify-center rounded bg-surface-container hover:bg-surface-bright transition-colors cursor-pointer group">
+<span class="font-mono text-[12px] text-outline/50 group-hover:text-primary">2</span>
+</div>
+<!-- Casilla 3 (O) -->
+<div class="relative flex items-center justify-center rounded bg-surface-container-high transition-transform duration-200">
+<span class="font-display-lg text-display-lg text-tertiary select-none font-bold">O</span>
+<span class="absolute top-1 left-1.5 font-mono text-[10px] text-outline">3</span>
+</div>
+<!-- Casilla 4 (Vacía) -->
+<div class="relative flex items-center justify-center rounded bg-surface-container hover:bg-surface-bright transition-colors cursor-pointer group">
+<span class="font-mono text-[12px] text-outline/50 group-hover:text-primary">4</span>
+</div>
+<!-- Casilla 5 (X) -->
+<div class="relative flex items-center justify-center rounded bg-surface-container-high transition-transform duration-200">
+<span class="font-display-lg text-display-lg text-secondary select-none font-bold">X</span>
+<span class="absolute top-1 left-1.5 font-mono text-[10px] text-outline">5</span>
+</div>
+<!-- Casilla 6 (Vacía) -->
+<div class="relative flex items-center justify-center rounded bg-surface-container hover:bg-surface-bright transition-colors cursor-pointer group">
+<span class="font-mono text-[12px] text-outline/50 group-hover:text-primary">6</span>
+</div>
+<!-- Casilla 7 (Vacía) -->
+<div class="relative flex items-center justify-center rounded bg-surface-container hover:bg-surface-bright transition-colors cursor-pointer group">
+<span class="font-mono text-[12px] text-outline/50 group-hover:text-primary">7</span>
+</div>
+<!-- Casilla 8 (O) -->
+<div class="relative flex items-center justify-center rounded bg-surface-container-high transition-transform duration-200">
+<span class="font-display-lg text-display-lg text-tertiary select-none font-bold">O</span>
+<span class="absolute top-1 left-1.5 font-mono text-[10px] text-outline">8</span>
+</div>
+<!-- Casilla 9 (Vacía / Siguiente Esperada) -->
+<div class="relative flex items-center justify-center rounded bg-surface-container-high/60 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary text-[28px] animate-pulse">adjust</span>
+<span class="absolute top-1 left-1.5 font-mono text-[10px] text-primary">9*</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md pt-2 px-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>Casilla recomendada/esperada: <span class="text-primary font-mono font-bold">9</span></span>
+</div>
+<div class="flex items-center gap-1 font-mono">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Duración: <strong class="text-on-surface">3m 15s</strong></span>
+</div>
+</div>
+</div>
+<!-- TARJETAS DE JUGADORES Y WEBSOCKETS -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col gap-space-md shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">sensors</span>
+            Canales WebSockets
+          </span>
+<span class="font-label-md text-label-md text-tertiary font-mono">Cowboy WS Protocol</span>
+</div>
+<!-- Jugador 1: Ana -->
+<div class="flex flex-col gap-2 p-space-md rounded-lg bg-surface-container">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-secondary flex items-center justify-center font-bold text-label-lg font-mono">
+                X
+              </div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Ana López</span>
+<span class="font-mono text-label-md text-on-surface-variant">IP: 192.168.1.45</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="inline-flex items-center gap-1.5 text-label-md font-mono text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                Socket Activo
+              </span>
+<span class="font-label-md text-label-md text-on-surface-variant font-mono">Latencia: <span class="text-primary font-bold">14 ms</span></span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md pt-2 mt-1 bg-surface-container-high/40 p-2 rounded">
+<span>Pid Handler: <span class="font-mono text-on-surface">&lt;0.418.0&gt;</span></span>
+<span>Frame In/Out: <span class="font-mono text-on-surface">18 / 19</span></span>
+</div>
+</div>
+<!-- Jugador 2: Carlos -->
+<div class="flex flex-col gap-2 p-space-md rounded-lg bg-surface-container">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-tertiary flex items-center justify-center font-bold text-label-lg font-mono">
+                O
+              </div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Carlos Mendoza</span>
+<span class="font-mono text-label-md text-on-surface-variant">IP: 10.0.4.112</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="inline-flex items-center gap-1.5 text-label-md font-mono text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                Socket Activo
+              </span>
+<span class="font-label-md text-label-md text-on-surface-variant font-mono">Latencia: <span class="text-primary font-bold">22 ms</span></span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md pt-2 mt-1 bg-surface-container-high/40 p-2 rounded">
+<span>Pid Handler: <span class="font-mono text-on-surface">&lt;0.422.0&gt;</span></span>
+<span>Frame In/Out: <span class="font-mono text-on-surface">16 / 17</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- COLUMNA DERECHA: TELEMETRÍA OTP Y HISTORIAL (7 COLS) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- PANEL DE MÉTRICAS BEAM Y OTP -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col gap-space-md shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">memory</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Inspección de Proceso Erlang/OTP</span>
+</div>
+<span class="font-label-md text-label-md px-2.5 py-1 rounded bg-surface-container-high text-primary font-mono font-bold">erlang:process_info/2</span>
+</div>
+<!-- Bento Grid de Telemetría -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<!-- Tarjeta 1: Memoria -->
+<div class="bg-surface-container p-space-md rounded-lg flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant">Memoria Heap</span>
+<span class="font-headline-sm text-headline-sm font-mono text-on-surface font-bold">14.8 KB</span>
+<div class="flex items-center gap-1 text-[11px] text-tertiary font-mono mt-1">
+<span class="material-symbols-outlined text-[13px]">arrow_downward</span>
+              GC recents: 3
+            </div>
+</div>
+<!-- Tarjeta 2: Reductions -->
+<div class="bg-surface-container p-space-md rounded-lg flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant">Reductions OTP</span>
+<span class="font-headline-sm text-headline-sm font-mono text-primary font-bold">38,420</span>
+<div class="flex items-center gap-1 text-[11px] text-on-surface-variant font-mono mt-1">
+              Sched: Sched #4
+            </div>
+</div>
+<!-- Tarjeta 3: Cola Mensajes -->
+<div class="bg-surface-container p-space-md rounded-lg flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant">Cola de Mensajes</span>
+<span class="font-headline-sm text-headline-sm font-mono text-tertiary font-bold">0 msgs</span>
+<div class="flex items-center gap-1 text-[11px] text-tertiary font-mono mt-1">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+              Sin backpressure
+            </div>
+</div>
+<!-- Tarjeta 4: Supervisor Link -->
+<div class="bg-surface-container p-space-md rounded-lg flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant">Supervisor Link</span>
+<span class="font-title-md text-title-md font-mono text-on-surface font-bold">&lt;0.120.0&gt;</span>
+<div class="flex items-center gap-1 text-[11px] text-on-surface-variant font-mono mt-1">
+              one_for_one
+            </div>
+</div>
+</div>
+<!-- Mnesia & Registro gen_statem -->
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-2">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary">database</span>
+<span class="font-label-lg text-label-lg text-on-surface">Mnesia Checkpointer Sync</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-mono text-label-md text-on-surface-variant">Último commit: <strong class="text-tertiary">hace 4s</strong></span>
+<span class="px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary font-label-md text-label-md font-bold">DISC_COPIES: OK</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-lowest p-space-sm rounded font-mono text-label-md text-on-surface-variant overflow-x-auto">
+<span class="text-outline">state_data:</span> {game_data, 4892, {board, [x,empty,o,empty,x,empty,empty,o,empty]}, turn_x, [{ana, "&lt;0.418.0&gt;"}, {carlos, "&lt;0.422.0&gt;"}], [{timer_ref, 30000}]}
+          </div>
+</div>
+</div>
+<!-- HISTORIAL DE TRANSICIONES Y EVENTOS RECIENTES -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col gap-space-md shadow-md flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">reorder</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Bitácora de Transiciones (OTP Trace)</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-mono">SysTrace Activo</span>
+</div>
+<!-- Lista cronológica con diseño táctico -->
+<div class="flex flex-col gap-2">
+<!-- Evento 1 -->
+<div class="flex items-start gap-3 p-space-sm bg-surface-container rounded-lg">
+<span class="font-mono text-label-md text-outline pt-0.5">14:02:18.914</span>
+<span class="w-2 h-2 rounded-full bg-secondary mt-1.5"></span>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Jugador Carlos (O) marcó casilla 8</span>
+<span class="font-mono text-label-md text-on-surface-variant">gen_statem:cast(next_state: wait_player_x, data_updated)</span>
+</div>
+<span class="font-mono text-label-md text-tertiary">OK</span>
+</div>
+<!-- Evento 2 -->
+<div class="flex items-start gap-3 p-space-sm bg-surface-container rounded-lg">
+<span class="font-mono text-label-md text-outline pt-0.5">14:01:54.202</span>
+<span class="w-2 h-2 rounded-full bg-primary mt-1.5"></span>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Jugador Ana (X) marcó casilla 5</span>
+<span class="font-mono text-label-md text-on-surface-variant">gen_statem:cast(next_state: wait_player_o, timer_reset: 30s)</span>
+</div>
+<span class="font-mono text-label-md text-tertiary">OK</span>
+</div>
+<!-- Evento 3 -->
+<div class="flex items-start gap-3 p-space-sm bg-surface-container rounded-lg">
+<span class="font-mono text-label-md text-outline pt-0.5">14:01:31.810</span>
+<span class="w-2 h-2 rounded-full bg-secondary mt-1.5"></span>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Jugador Carlos (O) marcó casilla 3</span>
+<span class="font-mono text-label-md text-on-surface-variant">gen_statem:cast(next_state: wait_player_x, timer_reset: 30s)</span>
+</div>
+<span class="font-mono text-label-md text-tertiary">OK</span>
+</div>
+<!-- Evento 4 -->
+<div class="flex items-start gap-3 p-space-sm bg-surface-container rounded-lg">
+<span class="font-mono text-label-md text-outline pt-0.5">14:01:05.412</span>
+<span class="w-2 h-2 rounded-full bg-tertiary mt-1.5"></span>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Mnesia Snapshot Guardado</span>
+<span class="font-mono text-label-md text-on-surface-variant">mnesia:write({game_state, 4892, ...})</span>
+</div>
+<span class="font-mono text-label-md text-tertiary">SYNC</span>
+</div>
+<!-- Evento 5 -->
+<div class="flex items-start gap-3 p-space-sm bg-surface-container rounded-lg">
+<span class="font-mono text-label-md text-outline pt-0.5">14:00:45.002</span>
+<span class="w-2 h-2 rounded-full bg-primary mt-1.5"></span>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Jugador Ana (X) marcó casilla 1</span>
+<span class="font-mono text-label-md text-on-surface-variant">gen_statem:cast(next_state: wait_player_o, timer_reset: 30s)</span>
+</div>
+<span class="font-mono text-label-md text-tertiary">OK</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PANEL DE ACCIONES ADMINISTRATIVAS CRÍTICAS -->
+<section class="bg-surface-container-low p-space-lg rounded-xl flex flex-col gap-space-md shadow-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2 pb-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded bg-secondary-container/40 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+</div>
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Operaciones Administrativas del Proceso</h2>
+<span class="font-body-md text-body-md text-on-surface-variant">Comandos de supervisión y gestión directa sobre el árbol de procesos OTP y almacenamiento persistente.</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded font-label-md text-label-md text-secondary font-mono">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+        Auth: Nivel Operador L2
+      </div>
+</div>
+<!-- Botones de Acción Operativa -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Botón Secundario: Mnesia Sync -->
+<button class="flex items-center justify-center gap-2 px-space-md py-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-lg text-label-lg transition-all active:scale-[0.98]" id="btn-force-sync">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+        Forzar Sync Mnesia
+      </button>
+<!-- Botón Ámbar: Pausar Partida -->
+<button class="flex items-center justify-center gap-2 px-space-md py-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary-container font-label-lg text-label-lg transition-all active:scale-[0.98]" id="btn-pause-game">
+<span class="material-symbols-outlined text-[18px]">pause_circle</span>
+        Pausar Partida
+      </button>
+<!-- Botón Rojo Suave: Reiniciar Proceso (Crash Test) -->
+<button class="flex items-center justify-center gap-2 px-space-md py-3 rounded-lg bg-secondary-container/30 hover:bg-secondary-container/50 text-secondary font-label-lg text-label-lg transition-all active:scale-[0.98]" id="btn-restart-process">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+        Reiniciar Proceso (Crash Test)
+      </button>
+<!-- Botón Destructivo: Finalizar Partida -->
+<button class="flex items-center justify-center gap-2 px-space-md py-3 rounded-lg bg-secondary-container text-on-secondary font-label-lg text-label-lg transition-all shadow-[0_0_16px_rgba(181,0,54,0.3)] hover:opacity-90 active:scale-[0.98]" id="btn-kill-game">
+<span class="material-symbols-outlined text-[18px]">stop_circle</span>
+        Finalizar por Timeout
+      </button>
+</div>
+<!-- Notificación interactiva / retroalimentación en vivo -->
+<div class="hidden p-space-sm rounded bg-surface-container flex items-center justify-between font-label-md text-label-md" id="status-toast">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span id="status-toast-text">Comando ejecutado con éxito</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('status-toast').classList.add('hidden')">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</div>
+</section>
+</div>
+<script>
+  (function() {
+    let timeLeft = 24;
+    const timerElem = document.getElementById('turn-timer');
+    const barElem = document.getElementById('turn-bar');
+    const toast = document.getElementById('status-toast');
+    const toastText = document.getElementById('status-toast-text');
+
+    // Simulación del temporizador de turno
+    setInterval(function() {
+      if (timeLeft > 1) {
+        timeLeft--;
+        if (timerElem) timerElem.textContent = timeLeft + 's';
+        if (barElem) {
+          const pct = Math.max(0, (timeLeft / 30) * 100);
+          barElem.style.width = pct + '%';
+          if (timeLeft <= 5) {
+            barElem.className = 'bg-secondary h-full transition-all duration-1000';
+          }
+        }
+      }
+    }, 1000);
+
+    function showToast(msg) {
+      if (toast && toastText) {
+        toastText.textContent = msg;
+        toast.classList.remove('hidden');
+        setTimeout(function() {
+          toast.classList.add('hidden');
+        }, 4000);
+      }
+    }
+
+    const btnSync = document.getElementById('btn-force-sync');
+    if (btnSync) {
+      btnSync.addEventListener('click', function() {
+        showToast('Mnesia sync ejecutado en <0.412.0>. Snapshot consolidado en disco.');
+      });
+    }
+
+    const btnPause = document.getElementById('btn-pause-game');
+    if (btnPause) {
+      btnPause.addEventListener('click', function() {
+        const isPaused = btnPause.textContent.includes('Reanudar');
+        if (isPaused) {
+          btnPause.innerHTML = '<span class="material-symbols-outlined text-[18px]">pause_circle</span> Pausar Partida';
+          showToast('Partida #4892 reanudada (gen_statem: resume_session).');
+        } else {
+          btnPause.innerHTML = '<span class="material-symbols-outlined text-[18px]">play_circle</span> Reanudar Partida';
+          showToast('Partida #4892 en pausa administrativa.');
+        }
+      });
+    }
+
+    const btnRestart = document.getElementById('btn-restart-process');
+    if (btnRestart) {
+      btnRestart.addEventListener('click', function() {
+        if (confirm('¿Confirmar salida anormal para crash test? El supervisor one_for_one levantará una nueva instancia.')) {
+          showToast('exit(<0.412.0>, kill) enviado. Supervisor restaurando estado desde Mnesia...');
+        }
+      });
+    }
+
+    const btnKill = document.getElementById('btn-kill-game');
+    if (btnKill) {
+      btnKill.addEventListener('click', function() {
+        if (confirm('¿Desea dar por finalizada la partida forzosamente por timeout administrativo?')) {
+          showToast('Partida #4892 finalizada. PIDs de websockets notificados.');
+        }
+      });
+    }
+
+    const btnRefresh = document.getElementById('btn-quick-refresh');
+    if (btnRefresh) {
+      btnRefresh.addEventListener('click', function() {
+        showToast('Telemetría OTP actualizada en tiempo real.');
+      });
+    }
+  })();
+</script></main></div></body></html>
