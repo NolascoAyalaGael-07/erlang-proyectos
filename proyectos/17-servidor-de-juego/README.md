@@ -63,3 +63,5 @@ copiar a un Gist, el mapa de la rubrica, el guion para Loom, la lista de
 capturas y la grabacion Asciinema real en `entrega/evidencias/validacion.cast`.
 Las capturas originales de Stitch se conservan en
 `design/stitch_tres_en_raya_p17/`.
+
+**Demostracion Loom:** [Ver video](https://www.loom.com/share/e04a9b309dcb4c2fa35a5b2c9c3696a2)

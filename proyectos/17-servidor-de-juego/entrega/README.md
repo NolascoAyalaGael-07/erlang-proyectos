@@ -219,6 +219,10 @@ las rutas HTTP, además de EUnit, `/health` y `/metrics`.
 
 **Grabación:** [Abrir Asciinema](https://asciinema.org/a/X3JID0BLRKg7XCCo)
 
+### Demostración Loom
+
+[Ver demo del proyecto en Loom](https://www.loom.com/share/e04a9b309dcb4c2fa35a5b2c9c3696a2)
+
 ### Código fuente completo
 
 **Código fuente completo:** [proyecto 17 en la rama de entrega](https://github.com/NolascoAyalaGael-07/erlang-proyectos/tree/entrega-p17/proyectos/17-servidor-de-juego)
@@ -236,5 +240,5 @@ sistema.
 La práctica integra el juego web con procesos OTP por partida, supervisión,
 diagnóstico HTTP y vistas administrativas diseñadas en Google Stitch. Las
 pruebas automatizadas validan las reglas principales y el comportamiento ante
-la caída de una partida. El Loom y los enlaces públicos de evidencia deben
-agregarse al completar la entrega desde las cuentas del estudiante.
+la caída de una partida. Las demostraciones en Loom y Asciinema complementan
+el código, las pruebas y las capturas incluidas en la entrega.
